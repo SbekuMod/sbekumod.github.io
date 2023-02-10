@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="it-IT"><head><meta http-equiv="Content-Type" content="text/html; utf-8">
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	<link rel="stylesheet" href="brand/stylesheet.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="alien1/stylesheet.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="alien2/stylesheet.css" type="text/css" charset="utf-8" />
+	<style>
+		
+		:root {
+			--color1: orange;
+			--color2: orange;
+			--color3: orange;
+			--color4: orange;
+			--color5: orange;
+			--cend: 7;
+			--credits = 4.5s;
+		}
+		
+		* {
+		  margin: 0;
+		  padding: 0;
+		  box-sizing: border-box;
+		  font-family: brandon_grotesqueregular, sans-serif;
+		  font-size:18px;
+		}
+		
+		body {
+			background-color : #020100;
+			color: #FFF;
+		}
+		
+		header {
+			background-image : linear-gradient(rgb(36, 29, 19),rgba(16, 11, 2, 0));;
+			/*box-shadow: 1px 16px 14px 6px rgb(8 6 1 / 73%);*/
+			position:sticky;
+			/*display: unset;*/
+			top: 0;
+		}
+		
+		header nav{
+			display: flex;
+			justify-content: space-between;
+			align-items:center;
+			padding-left: 142px;
+			padding-right: 142px;
+			
+		}
+		
+		header nav .tabs{
+			list-style-type:none;
+			
+			display:flex;
+			justify-content:flex-end;
+		}
+		
+		header nav .tabs .tab{
+			display: block;
+			margin-left: 3px;
+			margin-right: 3px;
+			border-bottom: 1px;
+			
+		}
+		
+		header nav .tabs .tab a[data-switcher=""]{
+			display: block;
+			padding: 15px 30px;
+			text-decoration:none;
+			color: #FFF;
+			background: #722800;
+			border-radius: 9px;
+			cursor:pointer;
+			
+		}
+		
+		header nav .tabs .tab:hover a[data-switcher]{
+			background-color: #853001;
+			border-radius:6px;
+			
+		}
+		
+		header nav .tabs .tab.is-active a[data-switcher=""]{
+			background-color: #DA4F04;
+			font-weight:700;
+		}
+		
+		header nav h1{
+			font-size : 28px;
+			font-weight:600;
+		}
+		
+		.dropbtn {
+		  background-color: #722800;
+		  color: white;
+		  padding: 16px;
+		  font-size: 16px;
+		  border: none;
+		  cursor: pointer;
+		  border-radius:9px;
+		}
+
+
+		.dropbtn:hover, .dropbtn:focus {
+		  #background-color: #853001;
+		}
+
+
+		.dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+
+
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  top:51px;
+		  left:-10px;
+		  background-color: #722800;
+		  min-width: 160px;
+		  max-width: 170px;
+		  
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  border-radius:6px;
+		}
+		
+		.dropdown-content:hover{border-radius:6px;}
+
+
+		.dropdown-content a {
+			color: white;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+			font-family: sans-serif;
+			font-size:14px;
+		}
+		
+		.dropdown-content a:hover{
+			cursor: pointer;
+		}
+
+		.show {display:block;}
+		
+		
+		
+		
+		main{
+			padding-left: 142px;
+			padding-right:142px;
+		}
+		
+		.pages{
+			margin-top:60px;
+		}
+		
+		.pages .page{
+			display:none;
+		}
+		
+		.pages .page.is-active {
+			display:block;
+		}
+		
+		
+		/* occupiamoci della pagina home */
+		
+		.home{
+			display: grid;
+			justify-content: center;
+			grid-template-columns: 85%;
+			grid-auto-rows: minmax(50px, auto);
+			align-items: start;
+			justify-items: start;
+		}
+		
+		#stone{
+			height: auto;
+			width: auto;
+			margin-left: 45%;
+		}
+		
+		table {
+			border-collapse: collapse;
+			text-align:center;
+		}	
+		
+		table tr td{
+			padding-bottom: 20px;
+			padding-top: 20px;
+			padding-right:30px;
+			/*border-top: 1px solid white;*/
+		}
+		
+		/*table tr td:nth-child(1){width:700px}
+		table tr td:nth-child(2){width:200px}*/
+		
+		
+		table tr{
+			border-top: 1px solid white;
+			
+		}
+		
+		main a{
+			text-decoration:none;
+			color:gold;
+		}
+		
+		.page[data-page="6"] a:nth-of-type(1){
+			color: var(--color1);
+		}
+		
+		.page[data-page="6"] a:nth-of-type(2){
+			color: var(--color2);
+		}
+		
+		a.n{
+			color: rgb(42,217,133);
+		}
+		
+		ul.zelda li.z1{list-style-image: url(Assets/1Numt.png);}
+		ul.zelda li.z2{list-style-image: url(Assets/2Numt.png);}
+		ul.zelda li.z3{list-style-image: url(Assets/3Numt.png);}
+		ul.zelda li.z4{list-style-image: url(Assets/4Numt.png);}
+		
+		ul.zelda li{
+			padding: 0.5rem 1.5rem 1rem;
+		}
+		
+
+		
+
+		
+		@keyframes change{
+			0% { font-family:alien1; text-transform:uppercase;}
+			25% { font-family:alien2; text-transform:lowercase;}
+			50% { font-family:brandon_grotesqueregular;}
+			75% {font-family:alien1; text-transform:uppercase;}
+			100% {font-family:brandon_grotesqueregular;text-transform:lowercase;}
+		}
+		
+		a.n:hover{
+			animation-name: change;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+		}
+		
+		.scale50{
+			max-height: auto;
+			max-width: 50%;
+			transition: opacity 1s;
+		}
+		
+		.scale30{
+			max-height:auto;
+			max-width:30%;
+			transition: opacity 1s;
+		}
+		
+		ul .zelda{
+			padding-bottom:10px;
+		}
+		
+		.curios {
+			border-top-style: double;
+			border-top-width: 10px;
+			border-top-color: rgb(42,217,133);
+			margin-top: 150px;
+			margin-bottom: 50px;
+			
+			display:grid;
+			row-gap:40px;
+			text-align: center;
+		}
+		
+		.title{
+			font-size: 2em;
+			font-weight: bold;
+			margin-top: 0.67em;
+			margin-bottom: 0.1em;
+			text-align:left;
+		}
+		
+		.alc{
+			grid-column-start:1; 
+			grid-column-end:7;
+		}
+		
+		.curios div {
+			border-top-style:solid;
+			/*border-bottom-style:solid;*/
+			border-color:rgb(113, 218, 168);
+			padding:30px;
+		}
+		
+		.violet{
+			border-top-color: rgba(91,80,168,255);
+		}
+		
+		.violet div{
+			border-color:rgba(139,130,194,255);
+		}
+		
+		.orange{
+			border-top-color:#e67700;
+		}
+		
+		.orange div{
+			border-color: #ffa94d;
+		}
+		
+		.center{
+			text-align:center;
+		}
+		
+		@keyframes titles{
+			15% {opacity:0;}
+			30% {opacity:0;}
+			50% {opacity:0.5;}
+			99.999%{opacity:1;}
+			100%{opacity:1;}
+		}
+		
+		.fade1 ,.fade2 ,.fade3 ,.fade4 ,.fade5,.fade6,.fade7,.fade8,.fade9,.fade10,.fade11{
+			display:block;
+			margin-top:18px;
+			opacity:0;
+		}
+		
+		.fade1{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:0.5s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		
+		.fade2{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:1s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		
+		.fade3{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:2s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		
+		.fade4{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:3s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		
+		.fade5{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:4s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		
+		.fade6{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:5s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		.fade7{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:6s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		.fade8{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:7s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		.fade9{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:8s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		.fade10{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:9s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		.fade11{
+			animation-name: titles;
+			animation-duration: var(--credits);
+			animation-delay:10s;
+			animation-iteration-count: 1;
+			animation-fill-mode:forwards
+		}
+		<!-- .fade1 ,.fade2 ,.fade3 ,.fade4 ,.fade5,.fade6,.fade7,.fade8,.fade9,.fade10,.fade11{ -->
+			<!-- display:block; -->
+			<!-- margin-top:18px; -->
+			<!-- opacity:1; -->
+		<!-- } -->
+		
+		div[data-page="3"] h1 {
+			font-size: 2.5em;
+			line-height: calc(1ex / 0.42);
+			margin: calc(1ex / 0.42) 0;
+		}
+		
+		div[data-page="3"] p{
+			text-align: -webkit-center;
+			line-height: calc(1ex / 0.32);
+			margin: calc(1ex / 0.32) 0;
+		}
+		
+		#photos {
+		  /* Prevent vertical gaps */
+		  line-height: 0;
+		   
+		  -webkit-column-count: 5;
+		  -webkit-column-gap:   2px;
+		  -moz-column-count:    5;
+		  -moz-column-gap:      2px;
+		  column-count:         5;
+		  column-gap:           2px;  
+		}
+
+		#photos img {
+		  /* Just in case there are inline attributes */
+		  width: 100% !important;
+		  height: auto !important;
+		}
+		
+		#photos img:hover {
+		
+			transform: scale(1.5);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		
+		}
+		
+		@media (max-width: 1200px) {
+		  #photos {
+		  -moz-column-count:    4;
+		  -webkit-column-count: 4;
+		  column-count:         4;
+		  }
+		}
+		@media (max-width: 1000px) {
+		  #photos {
+		  -moz-column-count:    3;
+		  -webkit-column-count: 3;
+		  column-count:         3;
+		  }
+		}
+		@media (max-width: 800px) {
+		  #photos {
+		  -moz-column-count:    2;
+		  -webkit-column-count: 2;
+		  column-count:         2;
+		  }
+		}
+		@media (max-width: 400px) {
+		  #photos {
+		  -moz-column-count:    1;
+		  -webkit-column-count: 1;
+		  column-count:         1;
+		  }
+		}
+		
+	</style>
+	<script>
+
+		function smDropFunc() {
+		  document.getElementById("extraDropdown").classList.remove("show");
+		  document.getElementById("smDropdown").classList.toggle("show");
+		}
+
+		function extraDropFunc() {
+		  document.getElementById("smDropdown").classList.remove("show");
+		  document.getElementById("extraDropdown").classList.toggle("show");
+		}
+
+		window.onclick = function(event) {
+		    if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
+				}
+		    }
+		}
+
+		window.onload = () =>{
+			var r = document.querySelector(':root');
+			var max=0xbbbbbb;
+			var min =0x111121;
+			r.style.setProperty('--color1', '#'+ Math.round((max-min) * Math.random()+min).toString(16));
+			r.style.setProperty('--color2', '#'+ Math.round((max-min) * Math.random()+min).toString(16));
+			r.style.setProperty('--color3', '#'+ Math.round((max-min) * Math.random()+min).toString(16));
+			r.style.setProperty('--color4', '#'+ Math.round((max-min) * Math.random()+min).toString(16));
+			r.style.setProperty('--color5', '#'+ Math.round((max-min) * Math.random()+min).toString(16));
+
+
+			const tab_switchers = document.querySelectorAll('[data-switcher]');
+
+			const img = document.getElementById('stone');
+			img.addEventListener('mouseout',() =>{
+				const img = document.getElementById('stone');
+				img.style.marginLeft = Math.random()*100+"% ";
+			});
+
+			for(let i = 0; i < tab_switchers.length; i++) {
+				const tab_switcher = tab_switchers[i];
+				const page_id = tab_switcher.dataset.tab;
+
+				tab_switcher.addEventListener('click', () =>{
+					document.querySelector('.tabs .tab.is-active').classList.remove('is-active');
+					if(page_id >= 2 && page_id <= 6)
+						tab_switcher.parentNode.parentNode.parentNode.classList.add('is-active');
+					else
+						tab_switcher.parentNode.classList.add('is-active');
+
+					SwitchPage(page_id);
+				});
+			}
+		}
+
+		function SwitchPage (page_id) {
+			const current_page = document.querySelector('.pages .page.is-active');
+			current_page.classList.remove('is-active');
+
+			const next_page = document.querySelector(`.pages .page[data-page="${page_id}"]`);
+			next_page.classList.add('is-active');
+		}
+
+	</script>
+	
+<style type="text/css" id="operaUserStyle"></style></head>
+<body><header>
+	<nav>
+		<h1>SOWCT Debriefing Document</h1>
+		<ul class="tabs">
+			<li class="tab is-active">
+				<a data-switcher="" data-tab="1">Home</a>
+			</li>
+			<li class="tab">
+				<div class="dropdown">
+				  <button onclick="smDropFunc()" class="dropbtn">SbekuMod</button>
+				  <div id="smDropdown" class="dropdown-content">
+					<a data-switcher="false" data-tab="3">Lore</a>
+					<a data-switcher="false" data-tab="5">WIP</a>
+					<a data-switcher="false" data-tab="6">Download</a>
+				  </div>
+				</div>
+			</li>
+			<li class="tab">
+				<div class="dropdown">
+				  <button onclick="extraDropFunc()" class="dropbtn">Extra</button>
+				  <div id="extraDropdown" class="dropdown-content">
+					<a data-switcher="false" data-tab="2">Easter Egg, Chicche e References</a>
+					<a data-switcher="false" data-tab="4">Documentari e Documenti legati al gioco</a>
+				  </div>
+				</div>
+			</li>
+			<li class="tab">
+				<a data-switcher="" data-tab="7">Credits</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<section class="pages">
+		<div class="page is-active" data-page="1">
+			<div class="home">
+				<div><h3>Benvenuto nel debriefing del DLC di Outer Wilds.</h3></div>
+				<div>
+				Ciao Mike, ora che hai finito la nostra mod e <u>tutto</u> Outer Wilds, ti offriamo un ultimo sguardo verso i segreti del DLC tramite questa pagina interattiva.<br><br>
+				Ma prima di ogni altra cosa è molto importante che tu vada a leggere la narrativa - la nostra lore - su cui abbiamo costruito la SbekuMod: Echoes of the Desert; la puoi trovare all'interno della sezione SbekuMod insieme a dei succosi "dietro le quinte" sullo sviluppo della mod.<br><br>
+				Infine, come da tradizione, abbiamo farcito la sezione Extra con una bella carrellata di chicche, curiosità e segreti!<br><br>
+				Godiamoci ancora un istante il tepore di questo falò; un istante che in alcuni luoghi può durare minuti, ore, anni.
+				</div>
+				<img id="stone" src="Assets/Stone2-30.png">
+			</div>
+		</div>
+
+		<div class="page" data-page="2">
+			<br>
+			<div class = "Easter_Egg">
+			<br>
+			<div class="title">1) Easter Egg e References</div>
+			<br>
+			<table>
+				<tr>
+					<td><div>Nell&apos;area del sogno numero 3 (canyon), nella parte bassa della casa, <b>dietro all&apos; ultimo elk</b> che ti insegue fino al ponte invisibile, c&apos;&egrave; un corridoio segreto con un muro illusorio alla sinistra.<br>Passando il muro illusorio &egrave; possibile trovare un quadro di un elk? festoso.</div></td><td><img src=Assets/djelk.png style="width:15vw; height:auto;"></td>
+				</tr>
+				<tr>
+					<td><div>Arrivati all&apos; occhio dell&apos; universo, guardando fuori dal vascello &egrave; possibile osservare il dispositivo che sta bloccando il segnale dell&apos; occhio.<br>&Egrave; particolarmente visibile se ti chiami Sabaku.</div></td><td><img src=Assets/bloccasegnale.png class=scale50></td>
+				</tr>
+				<tr>
+					<td colspan=2><div>Nell&apos; Hotel&apos;s hidden archive, se si fa scendere l&apos; ascensore senza entrarci, si salta sopra di questo e si scende al piano precedente all&apos;ultimo (mossa anche detta &#8220;il Dark Souls&#8221;), &egrave; possibile trovare un rullino per terra che mostra e conferma cosa &egrave; accaduto nel secondo esperimento con le lanterne.<br> <a href=https://youtu.be/vuQWJ-m8GCw?t=47 target="_blank" class="n"> Procedimento mostrato da The Lore Explorer</a> </div></td>
+				</tr>
+				<tr>
+					<td><div>Sono presenti 4 Easter Egg e riferimenti a Zelda</div></td>
+					
+					<td>
+					
+						<ul class = "zelda">
+						
+							<li class="z1">Il prigioniero &egrave; chiamato in alcuni file di gioco <b><u>Kaepora</u></b>, reference quindi a <br><a href=https://zelda.fandom.com/it/wiki/Kaepora_Gaebora target="_blank" class="n">Kaepora Gaebora</a><br> il gufo presente in alcuni capitoli dei giochi di Zelda.</li>
+							<li class="z2">Nella terza zona del sogno, andando sopra il tetto dell&apos; hotel &egrave; possibile trovare normalmente un korok (animale del gioco Zelda Breath of the Wild) mentre in versione matrix una cacchina (premio per aver collezionato 900 semi korok).</li>
+							<li class="z3">L&apos; achievement 1/900 &egrave; sempre collegato ai semi di korok; inoltre la miniatura &egrave; uguale all&apos;gesto eseguito da Link una volta aperto un baule.</li>
+							<li class="z4">L&apos; achievement Fire Arrows &egrave; una reference all&apos; unico modo in Zelda breath of the Wild per creare frecce infuocate.</li>
+						
+						
+						
+						
+						</ul>
+						
+					</td>
+					</tr>
+					<tr>
+						<td><div>Se si esce dal sogno dopo aver aperto il sarcofago (l&apos;unico modo &egrave; usare le password segrete trovate tramite bruteforce per spegnere la luce e passare il ponte che altrimenti richiede la nostra morte) &egrave; possibile trovare dentro il sarcofago il cadavere del prigioniero.</div></td><td><img src=Assets/prisoner_corpse.png></td>
+					</tr>
+					<tr>
+						<td colspan=2><div>Seppur non presente tra le impostazioni, i creatori volevano che, dopo aver ricaricato il jet-pack in una delle bombole degli elk, la fiamma del jet-pack diventasse del colore dei loro fal&ograve; (blu-verde). Questa feature &egrave; stata rimossa per evitare confusione nei giocatori. Attualmente &egrave; sbloccabile solo tramite cheat o mod.<br><a href="Assets/green_jet.png" target="_blank" rel="noopener noreferrer" class="n">Foto</a></div></td>
+					</tr>
+					<tr>
+						<td><div>Nella terza area del sogno, nel reel che viene guardato di nascosto da uno degli elk &egrave; presente, seppur coperto, l&apos;unica immagine di una delle razze del pianeta dove vivevano gli elk.<br><br> L&apos;ombra dell Owlk sfortunatamente copre quella parte di slide contenente questi animali simili a cani con orecchie di coniglio.</div></td><td><img src=Assets/dograbbit.png class="scale50"></td>
+					</tr>
+					<tr>
+						<td><div>Nella quarta area, andando vicino alla costa in superficie, &egrave; presente uno scoglio con sopra una candela. Accendendo questa candela accadono due cose:<br> In cielo appare una Cometa (visibile da varie parti del sogno) e si sente uno strano rumore.<br> Posando la lanterna ed entrando nel matrix, al posto della candela potremmo vedere un piccolo gattino.<br><br> Questo &egrave; il gatto di uno degli sviluppatori e si chiama <b>Comet</b>.</div></td><td><img src=Assets/Comet.png class="scale50"></td>
+					</tr>
+					<tr>
+						<td><div>Nell&apos; area delle Cinder Isles, la zona di accesso al sogno ha un posto vacante; questo apparteneva al prigioniero. Inoltre, nella stessa zona, &egrave; presente il suo quadro rovinato (per via dell&apos;odio nei suoi confronti) e i reels con lui presente.</div></td><td><img src=Assets/prisoner_destroy.png class=scale30></td>
+					</tr>
+					<tr>
+						<td><div><p>L&apos;achievement 232,78 gradi Celsius &egrave; una citazione al libro Fahrenheit 451 (451 &#186;F = 232,778 &#186;C)</p><p>In questo libro la cultura &egrave; proibita e i libri vengono bruciati (proprio come vengono bruciati i rullini nel gioco).<br>451&#186;F si pensa essere la temperatura alla quale brucia la carta (non &egrave; vero per svariati motivi).</p></div></td><td><img src=Assets/7.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos; achievement Around the World in 90 seconds &egrave; una citazione al libro Giro del Mondo in 80 Giorni.</div></td><td><img src=Assets/1.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos; achievement Early Adopter si riferisce a Michele conosciuto sul web come Mike of The Desert, famoso per non  utilizzare mai subito le nuove tecnologie.</div></td><td><img src=Assets\4.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos;achievement Flat Hearther si riferisce probabilmente al terrapiattismo.</div></td><td><img src=Assets/6.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos; achievement Simulation Hypotesis &egrave; una reference a Morpheus del Film, fumetto, videogioco e serie animata Matrix. Nella miniatura il teporiano indossa gli stessi occhiali di Morpheus (con 4 lenti per&ograve;) e tiene in mano un cucchiaio piegato (reference al cucchiaio piegato nel secondo film di Matrix). Nel film matrix si parla sempre di realt&agrave; virtuale e di come il genere umano viva in un mondo &#8220;Bello&#8221; rispetto a quello reale prosciugato delle sue risorse (collegamento con la storia degli elk). Inoltre va notato come Morpheus sia nella nostra cultura una Divinit&agrave; o Entit&agrave; legata ai sogni, e per prendere questo achievement &egrave; necessario provare ad addormentarsi ad un fal&ograve; (quelli normali).</div></td><td><img src=Assets/10.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos;achievement &#8220;The Grate Filter&#8221; &egrave; un gioco di parole con &#8220;The Great Filter&#8221;, alludendo quindi alla teoria dove ogni specie vivente dovr&agrave;, nel corso di alcuni step evolutivi, superare questo filtro o estinguersi. Gli step totali sono 9, e non sappiamo dove possa essere questo filtro.<br><br>I Nomai sono riusciti ad arrivare all&apos;ultimo step, morendo poi per una gigantesca catastrofe (il filtro).<br>Per gli esseri Umani non sappiamo invece se sono riusciti a superare il filtro (ma probabilmente no).</div></td><td><img src=Assets/5.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos;achievement &#8220;Sleep. Wake. Repeat&#8221; &egrave; una reference al film &#8220;Edge of Tomorrow&#8221;, dove il protagonista (interpretato da Tom Cruise) si ritrova a rivivere sempre la stessa giornata. Nel film inoltre si scopre che esiste una razza aliena con la tecnologia per creare loop temporali.</div></td><td><img src=Assets/9.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos;achievement &#8220;Oof Ouch, My Bones&#8221; &egrave; una reference a un meme del 2016, nel meme si racconta di un fantomatico Bone Hurting Juice in grado di romperti le ossa. (wiki)</div></td><td><img src=Assets/14.png></td>
+					</tr>
+					<tr>
+						<td><div>L&apos;achievement &#8220;Tubular&#8221; si riferisce alla forma dello straniero. L&apos;ispirazione, seppur non certa, potrebbe essere quella degli<br><a href=https://en.wikipedia.org/wiki/O%27Neill_cylinder target="_blank" class="n">O&apos;Neill Cylinder</a><br> navi spaziali tubulari con all&apos;interno ecosistemi interi.</div></td><td><img src=Assets/3.png></td>
+					</tr>
+				</table>
+			</div>
+			<div class="curios">
+				<div style="border-style:none" class="title">2) Curiosit&agrave;</div>
+				<div>La nave &egrave; programmata per evitare la distruzione per via della supernova. Un grafico, che mostra in tempo reale<br><a href="Assets/escape.mp4" target="_blank" rel="noopener noreferrer" class="n">l&apos; apertura delle vele solari</a><br>assieme alla distanza e stadio di vita del sole, &egrave; presente nella cabina di pilotaggio (accessibile da sopra la diga o tramite l&apos; ascensore nascosto nella zona di attracco navicelle).<br>Il grafico &egrave; mostrato tramite un proiettore sul soffitto (&egrave; possibile oscurarlo con il personaggio o col sondino).</div>
+				<div style="border-style:none"><img src="Assets/img1.png" style="width:15vw; height:auto;"><img src="Assets/img2.png" style="width:15vw; height:auto;"><img src="Assets/img3.png" style="width:15vw; height:auto;"><img src="Assets/img4.png" style="width:15vw; height:auto;"><img src="Assets/img5.png" style="width:15vw; height:auto;"></div>
+				<div>La Rottura della Diga &egrave; probabilmente dovuta sia alla sua et&agrave; (calcolando che gli elk sono arrivati nel sistema prima dei Nomai, questo vuol dire che la diga &egrave; antichissima) che all&apos; improvvisa partenza della nave per via dell&apos; imminente nova della stella. La diga e praticamente tutto il resto della nave &egrave; fatto in legno e metallo.</div>
+				<div>Le gigantesche finestre della nave sono in realt&agrave; degli enormi schermi con tanto di pixel RGB. Avvicinandosi a questi, infatti, &egrave; possibile notare un pattern di Rosso, Verde e Blu; inoltre, una volta che la nave inizia la sua fuga, per qualche istante questi schermi si spengono per un calo di corrente. Infine, la fonte dell&apos; immagine, visto che l&apos;esterno della nave &egrave; completamente opaco &egrave; quasi sicuramente la finestra della cabina di pilotaggio.<br><a href="Assets/sondino.mp4" target="_blank" rel="noopener noreferrer" class="n"> Un video dove viene mostrato un ulteriore esempio.</a></div>
+				<div>Tra i cadaveri degli elk non si trovano mai bambini, eppure sono molteplici le raffigurazioni di elk di giovane et&agrave; (e forse sesso?).</div>
+				<div style="border-style:none"><img src="Assets/img6.png" style="width:10vw; height:auto;"><img src="Assets/img7.png" style="width:10vw; height:auto;"><img src="Assets/img8.png" style="width:10vw; height:auto;"><img src="Assets/img9.png" style="width:10vw; height:auto;"><img src="Assets/img10.png" style="width:10vw; height:auto;"><img src="Assets/img11.png" style="width:10vw; height:auto;"><img src="Assets/img12.png" style="width:10vw; height:auto;"></div>
+				<div style="border-style:none"><img src="Assets/img13.png" style="width:10vw; height:auto;"><img src="Assets/img14.png" style="width:10vw; height:auto;"><img src="Assets/img15.png" style="width:10vw; height:auto;"><img src="Assets/img16.png" style="width:10vw; height:auto;"><img src="Assets/img17.png" style="width:10vw; height:auto;"></div>
+				<div>Gli elk possedevano un gioco da tavolo simile agli scacchi. La tavola &egrave; triangolare e ha degli scalini, dandole una forma quasi piramidale. Le pedine rappresentano una un&apos;alce e l&apos;altra l&apos;occhio dell universo (nei file di gioco le pedine si chiamano rispettivamente Antler e BoardGame-Eye). La pedina dell&apos;occhio usa lo stesso simbolo presente all&apos;entrata dello straniero; questo &#8220;conferma&#8221; che quel simbolo &egrave; un&apos;altro modo per rappresentare L&apos;occhio dell&apos;Universo.</div>
+				<div style="border-style:none"><img src="Assets/img18.png" style="width:9vw;height:auto;display:revert;"><img src="Assets/img20.png" style="width:9vw;height:auto;padding-bottom: 150px; display:revert;"><img src="Assets/img19.png" style="width:9vw;height:auto;display:revert"></div>
+				<div>Il nome degli abitanti dello straniero non ci viene mai detto in gioco, per&ograve; abbiamo come candidati: <div style="padding:revert;text-align:-webkit-auto;border-top:none;display: flex;justify-content: center;"><br>1. &#8220;GhostBirds&#8221; e &#8220;Ghosts&#8221; nei file di gioco;<br>2. &#8220;Pursuers&#8221; negli achievements;<br>3. &#8220;Elk&#8220; nei crediti finali;<br>4. &#8220;Barba Cervi&#8221; per il caro Cydonia;<br>5. &#8220;Gufalci&#8221; per Mike of the Desert;</div></div>
+				<div>La voce degli elk &egrave; invece stata campionata da vere alci (fonte wiki di outer wilds).</div>
+				<div>Se si esplora un minimo la 2a zona del sogno, seguendo la strada per spegnere le luci, &egrave; possibile trovare una casa, bruciata, in bella vista. Al suo interno &egrave; presente un quadro rappresentante la <b>Profezia del Prigioniero</b>, una delle aggiunte successive all&apos;uscita del DLC. Con il tempo infatti gli sviluppatori hanno modificato varie aree e micro puzzle per aiutare i giocatori.<br><a href="https://www.youtube.com/watch?v=lox4nqK4Lgs" target="_blank" rel="noopener noreferrer" class="n">The Lore Explorer ci mostra alcuni macro cambiamenti</a>.</div>
+				<div style="border-style:none"><img src="Assets/prisoner_profecy.png" style="width:19vw; height:auto;"></div>
+				<div>&Egrave; possibile accedere ai 3 sigilli del sarcofago molto velocemente. Esistono nel codice di gioco 3 password che permettono rispettivamente di: Mettere il ponte in piano al primo sigillo, Far arrivare la barca per il secondo sigillo, Spegnere la luce al terzo sigillo. Le password sono state trovate con il bruteforce e sono attualmente una parte fondamentale delle speedrun prisoner%.<br><a href="https://www.reddit.com/r/outerwilds/comments/pykqsg/datamined_codes/" target="_blank" rel="noopener noreferrer" class="n">I codici</a><br> permettono tra l&apos;altro di tornare nel mondo reale dopo aver aperto il sarcofago, lasciandoci vedere il cadavere del prigioniero.</div>
+				<div>Esistono ben 2 nuovi finali extra con l&apos;aggiunta del DLC, entrambi ottenuti disattivando l&apos;ATP e aspettando uno dentro lo straniero, e l&apos;altro dentro il sogno.</div>
+				<div>La visione che ci da il prigioniero cambia a seconda di quanto abbiamo scoperto del gioco. Vengono quindi tolte tutte le parti che non conosciamo del gioco.</div>
+				<div>Da alcune slide possiamo immaginarci quanto prima gli elk siano arrivati nel sistema solare rispetto ai nomai: &egrave; possibile infatti osservare che gemello cenere con un fiume oltre che al pianeta, ora distrutto dal seme di rovo oscuro, ancora intatto.</div>
+				<div style="border-style:none"><img src="Assets/oldplnt.png"></div>
+				<div>L&apos;immagine dopo i crediti di gioco, avr&agrave; una nuova razza aliena se si libera il prigioniero nel DLC.</div>
+				<div>Attorno al pianeta gassoso visibile nel sogno, a volte &egrave; possibile vedere uno strano oggetto. Quella &egrave; in realt&agrave; la nostra nave, il sogno/simulazione &egrave; in realt&agrave; sempre dentro il sistema solare.</div>
+				<div>L&apos;impostazione &#8220;Impatto Emotivo Ridotto&#8221; rallenta gli elk e diminuisce il range di aggro; inoltre alcuni suoni vengono abbassati di volume.</div>
+				<div>Il fiume all&apos;interno dello straniero sta violando le leggi della fisica perché sta scorrendo verso l&apos;alto invece che verso il basso (cosa impossibile all&apos;interno di una nave che ruota a velocit&agrave; costante), ancora pi&ugrave; impossibile &egrave; che la diga si svuota pi&ugrave; lentamente di quanto si riempia.</div>
+				<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 30px;">Le mani degli elk hanno 5 dita di cui due, agli estremi, pollici opponibili.<img src="Assets\hand.png" style="width:10vw; height:auto;"></div>
+				<div>In giro per lo straniero sono presenti delle piccole scatole, chiamate nei file di gioco Jewelry Box.</div>
+				<div style="border-style:none"><img src="Assets/box.png"></div>
+				<div>Gli elk indossavano vestiti di vari colori, tra cui: Nero, Giallo, Blu, Rosso, Marrone, Verde, Bianco (fonte: file di gioco).</div>
+				<div>I tre glitch della simulazione ti permettono di rientrare facilmente negli archivi: nella zona di caricamento c&apos;&egrave; un passaggio per il primo archivio, per il secondo &egrave; possibile ignorare l&apos;allarme morendo e per il terzo &egrave; presente un ponte invisibile che permette di skippare la maggior parte del livello.</div>
+				<div>Inizialmente gli sviluppatori volevano che a fine loop ci fosse un alba nella simulazione dimostrando che la notte non era perenne ma poi non &egrave; stata implementata per mancanza di tempo. &Egrave; possibile per&ograve; osservare che, in alcuni reel, nella simulazione sia giorno</div>
+				<div>La barca nel sogno pu&ograve; essere affondata spegnendo le 4 candele su di essa.</div>
+				<div>&Egrave; possibile entrare nel mondo onirico anche meditando, con il manufatto, davanti al fal&ograve;.</div>
+				<div>Nel matrix, il nostro personaggio possiede un modello unico visibile solamente in freecam.</div>
+				<div style="border-style:none"><img src="Assets/matrix.png" style="width:18vw; height:auto;"></div>
+				<div style="border-style:none">In casi molto rari, &egrave; possibile osservare quest&apos;altro modello ancor pi&ugrave; unico. Si dice fosse appartenuto ad un furbo esploratore ed abile pilota.</div>
+				<div style="border-style:none"><img src="Assets/Sbeku_matrix.jpg" style="width:18vw; height:auto;"></div>
+				<div>Nei File di gioco le slide di ogni reel sono in negativo, questo &egrave; legato al fatto che ogni slide viene proiettata con della luce fisica. Quindi &egrave; molto probabile che l&apos;immagine assorba le frequenze della luce e lasci passare il resto (lasciando proiettata l&apos;immagine positiva)(Non abbiamo basi concrete per questa conclusione).</div>
+				<div style="border-style:none"><img src="Assets/pianetaN.png" style="width:20vw; height:auto;"><img src="Assets/pianeta.png" style="width:20vw; height:auto;"></div>
+				<div>Il sole artificiale dello straniero, se lo si riesce a toccare, ti provocher&agrave; danni per via della sua temperatura.<br><a href="Assets/sole_art" target="_blank" rel="noopener noreferrer" class="n">Video</a></div>
+				<div>Da poco, finendo il dlc (con tanto di morte) &egrave; stata aggiunta la scritta finale "Echoes of the Eye"</div>
+				<div>Quando si libera il prigioniero e si esce dalla prigione si possono notare le impronte del prigioniero che portano a una visione e di conseguenza al lago. Una persona normale, dopo aver visto la visione, si getterebbe nel lago per onorare l&apos;ultimo desiderio del Prigioniero</div>
+				<div>Alla fine del gioco, a seconda se si &egrave; trovato Solanum, o il Prigioniero, e si lancia il Sondino nell&apos;occhio, cambier&agrave; l&apos;immagine del nuovo universo.</div>
+			</div>
+			
+				
+			<div class="curios violet">
+				<div style="border-style:none" class="title">3) Curiosit&agrave; Musicali</div>
+				<div>In molti pensano che lo strumento utilizzato dagli elk assomigli a un Theremin, invece il suono &egrave; stato confermato dal compositore essere una combinazione di segnali di un sintetizzatore, una Bayou slide guitar fatta da un&apos;antica porta di New Orleans e un loop di chitarra. (Andrew Prahlow su r/Outer Wilds)</div>
+				<div>Il &#8220;Flauto Spaziale&#8221; di Gabbro che somiglia a un clarinetto prende il suono da una tromba muta. Il sampling &egrave; stato fatto similmente ai sampling fatti per il Nintendo 64.<br>(Andrew Prahlow su r/Outer Wilds)</div>
+				<div>Il &#8220;concerto&#8221; suonato dagli elk nella prima area del sogno &egrave; chiamata nei file di gioco &#8220;Party House&#8221;. (Andrew Prahlow su r/Outer Wilds)</div>
+				<div>La prima canzone mai composta per OW &egrave; stata Campfire Song. (Andrew Prahlow su r/Outer Wilds)</div>
+				<div>Il suono dei Marshmallow che vengono mangiati &egrave; ottenuto campionando la masticazione di alcuni Cheez-It.<br><a href="https://soundcloud.com/andrewprahlow/ow-marshmalloweat-1-020716-ap/s-7T8OESZUA7k?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" rel="noopener noreferrer" class="n">Suono completo</a><br>&egrave; possibile sentire un &#8220;mmm&#8221; finale non incluso nel gioco. (Andrew Prahlow su r/Outer Wilds)</div>
+				<div>La musica che si sente mentre si &egrave; nel &#8220;matrix&#8221; non &egrave; originale del gioco ed appartiene a Scott Buckley.<br><a href="https://www.youtube.com/watch?v=kbTClxgehrQ" target="_blank" rel="noopener noreferrer" class="n">Il brano su youtube</a></div>
+				<div>Alla fine del fiume &egrave; possibile ascoltare (stando sulla zattera) un riarrangiamento musicale della Main Theme del gioco. Il nome di questo brano &egrave; chiamato River&apos;s End.<br>Sono presenti inoltre parti del theme principale del prigioniero.</div>
+			</div>
+			
+			<div class="curios orange">
+				<div style="border-style:none" class="title">4) Chicche del gioco base</div>
+				<div>&Egrave; possibile, prendendo colpi nel lato sinistro della nave, rompere il cristallo della nave e togliendo cos&igrave; la gravit&agrave; artificiale al suo interno.</div>
+				<div style="border-style:none"><img src="Assets/crystal.png" style="width:16vw; height:auto;"></div>
+				<div>Se si ha in mano un marshmallow durante l&apos;esplosione della supernova, quest&apos;ultima potr&agrave; cuocerli.</div>
+				<div>I frammenti di Vuoto Fragile possono essere danneggiati anche con lo schianto della nostra nave.</div>
+				<div>Le rane pescatrici perdono l&apos;aggro se mangiano la nostra nave o una sua parte (per esempio usando l&apos;espulsione di emergenza si pu&ograve; scappare nel mentre loro mangiano il retro della nave).</div>
+				<div><b>Incontrando due volte di seguito il nostro clone, avremo nuovi dialoghi.</b></div>
+				<div>&Egrave; possibile cavalcare il satellite artificiale Teporiano:<br><a href="https://www.reddit.com/r/outerwilds/comments/r90i7h/riding_on_timber_hearths_satellite/" target="_blank" rel="noopener noreferrer" class="n">dimostrazione di dankbouls87</a></div>
+				<div>Il satellite teporiano pu&ograve; essere spostato o addirittura lanciato usando la nostra nave.<br>Questo pu&ograve; portare a delle sfide interessanti, come lanciarlo sul sole, nel buco nero o anche sulla superficie della luna quantica.</div>
+				<div style="border-style:none"><img src="Assets/satellite.png" style="width:15vw; height:auto;"></div>
+				<div>Le navette Nomai possiedono un sistema di atterraggio segreto.</div>
+				<div>&Egrave; possibile vedere il nostro personaggio senza tuta sparando il sondino all&apos;interno della nave, togliendosi la tuta e poi fare foto con la nave.</div>
+				<div style="border-style:none"><img src="Assets/character1.png" style="width:15vw; height:auto;"><img src="Assets/character2.png" style="width:15vw; height:auto;"><img src="Assets/character3.png" style="width:15vw; height:auto;"></div>
+				<div>&Egrave; possibile, usando il sondino quando ci si trova nella sesto luogo ed uscire poi dalla luna, volare fino al sesto luogo.<br><a href="https://youtu.be/7rV_ON2Kcfw" target="_blank" rel="noopener noreferrer" class="n">Procedimento spiegato da Kaylee</a></div>
+				<div>In origine, il segnaloscopio avrebbe dovuto captare molti tipi di segnali. Tra questi ci sarebbero dovuti essere: Le statue con gli occhi aperti, i warp core con il buco bianco e i 4 templi del DLC (ogni tempio con un suono differente).<br><a href="https://outerwildsmods.com/mods/signals/" target="_blank" rel="noopener noreferrer" class="n">Mod Signals+</a></div>
+				<div>Con gli ultimi aggiornamenti, quando si inseriscono le coordinate per l&apos;occhio dell&apos;universo, non &egrave; pi&ugrave; necessario memorizzarsi i codici perch&egrave; appariranno nell&apos;hud.</div>
+				<div>Se si muore in modo permanente (morendo prima di attivare la statua, dopo aver disattivato l&apos;ATP o rompendo lo spazio tempo) il gioco non dir&agrave; &#8220;Continua spedizione&#8221; ma &#8220;Carica salvataggio precedente&#8221; a conferma che non esiste pi&ugrave; un loop.</div>
+			</div>
+		</div>
+
+		<div class="page" data-page="3">
+			<h1>Echoes of the Desert lore</h1>
+			<p>Mentre lo Straniero era in viaggio verso l&apos;Occhio dell&apos;Universo, uno dei suoi abitanti, il Monocorno, ebbe una visione durante il sonno.</p>
+
+			<p>Vide una creatura di una razza sconosciuta svegliarsi sotto un cielo di un mondo ignoto e partire a bordo di un rudimentale congegno volante, per  arrivare, infine, allo Straniero.
+			Una creatura come quella, non si era mai vista prima: pi&ugrave; piccolo di loro, dalla pelle squamosa e bluastra, dotato di quattro occhi e munito di tuta e casco.
+			Il casco era alquanto singolare. Dorato, ampio e munito di quelle che, probabilmente, erano delle antenne, ma che sembravano corna. Non come le loro, naturali e nodose, ma corna nondimeno.
+			La tuta, invece, pareva arrangiata alla bell&apos;e meglio, con fibbie e giunture sparse un po&apos; ovunque. Su di un lato, ben visibile, una toppa riportante un simbolo dorato.
+			Svegliatosi, il Monocorno decise di trascrivere la visione in una diapositiva, affinché non potesse dimenticarsi di ci&ograve; che aveva visto.</p>
+
+			<p>Pi&ugrave; lo Straniero si avvicinava all&apos;Occhio dell&apos;Universo, pi&ugrave; visioni il Monocorno aveva durante il sonno.
+			Continu&ograve; a vedere la creatura aliena all&apos;interno della loro nave madre, mentre si barcamenava nelle pi&ugrave; notevoli delle imprese, ma erano scenari che non riconosceva.
+			Vide lo Straniero vuoto, desolato, privo di vita, ed immagini di quello che sembrava essere il loro pianeta natale, ma inghiottito dall&apos;oscurit&agrave;, in una stasi innaturale.
+			Ogni sogno veniva trascritto in una diapositiva, e nascosto all&apos;interno della nave madre, celato alla vista dei suoi compagni, temendo in loro una reazione avversa alle immagini desolanti in essi contenuti. Il Monocorno incise delle musiche sui nastri, affinché potesse ritrovarli facilmente con l&apos;ausilio di una ricevente radio.</p>
+
+			<p>Lo Straniero e i suoi abitanti giunsero, infine, all&apos;Occhio dell&apos;Universo.</p>
+
+			<p>Lo analizzarono da vicino e quello che videro fu tremendo: interagire con l&apos;Occhio avrebbe portato alla fine di tutte le civilt&agrave; e di tutte le forme di vita nell&apos;intero universo.
+			Terrorizzati e furiosi, avendo sacrificato tutto per arrivare l&igrave;, e quindi senza una casa a cui tornare, fecero passare la notte per decidere il da farsi.
+			E in quella notte, il Monocorno ebbe un&apos;ultima visione: vide sé stesso in compagnia della creatura aliena, salire a bordo di una zattera ed insieme dirigersi verso una luce radiosa e confortante, e la sua mente fu pervasa da una sensazione di calma e sollievo.</p>
+
+			<p>L&apos;indomani, gli abitanti dello Straniero decisero di rifiutare ci&ograve; che avevano visto nell&apos;Occhio. Rinnegando la sua chiamata e la sua stessa esistenza, costruirono un macchinario in grado di bloccarne il segnale, e si nascosero al centro del sistema solare.
+			Sconvolti dal loro infausto destino, crearono un sistema di realt&agrave; simulata che ricordasse loro il mondo natio che avevano sacrificato.</p>
+
+			<p>Il Monocorno non sogn&ograve; pi&ugrave; la creatura aliena né niente altro, capendo dunque che le visioni erano una manifestazione onirica del segnale dell&apos;Occhio.
+			Spaventato dalla desolazione dello Straniero che aveva visto e soprattutto dall&apos;idea che quel futuro radioso e luminoso potesse non avverarsi, decise di agire.
+			Mentre gli abitanti erano immersi nella simulazione, si svegli&ograve; e spense il macchinario inibitore dell&apos;Occhio, riattivandone il segnale.</p>
+
+			<p>Venne per&ograve; presto catturato dagli altri, che lo rinchiusero dentro una cella assieme ad un artefatto, costruendo attorno ad essa una struttura, incatenandola ed immergendola poi nelle acque dello Straniero.
+			All&apos;interno della simulazione, la cella venne blindata con tre sigilli.
+			Fu cos&igrave; intrappolato per l&apos;eternit&agrave;, sia all&apos;interno della simulazione, che nel mondo reale.</p>
+
+			<p>Il Monocorno divenne quindi il Prigioniero, e si addorment&ograve; per un&apos;ultima volta, portando con sé il ricordo del simbolo sulla tuta della creatura, sognando un giorno di incontrarla e di andare insieme verso la luce.</p>
+		</div>
+
+		<div class="page" data-page="4">
+			<h2>Documentari e Documenti</h2>
+			<br><br>
+			
+			<div>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/a5bNYbNAsFc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tz8Sw6X-knM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ww12q6HsmJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			</div>
+			<br><br>
+			<div style="padding: 30px;border-top: solid;border-bottom: solid;border-color: gold;"><a href="Assets/OWtesi.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Tesi Universitaria dell&apos;ideatore e creatore di Outer Wilds</a></div>
+		</div>
+
+		<div class="page" data-page="5">
+			<h1 style="font-size:25px;">Work in progress e materiale extra</h1>
+			<h3 style="font-size:15px;font-weight:normal;">In questa sezione sono raccolti i bozzetti e alcuni retroscena dello sviluppo della SbekuMod, per i curiosi!</h3>
+			<section id="photos">
+				<img src="extra/bs1.jpg">
+				<img src="extra/bs2.jpg">
+				<img src="extra/bs3.jpg">
+				<img src="extra/bs7.jpg">
+				<img src="extra/bs8.jpg">
+				<img src="extra/bs4.jpg">
+				<img src="extra/bs5.jpg">
+				<img src="extra/bs6.jpg">
+				<img src="extra/bs10.jpg">
+				<img src="extra/bs11.jpg">
+				<img src="extra/bs12.jpg">
+				<img src="extra/bs13.jpg">
+				<img src="extra/bs14.jpg">
+				<img src="extra/bs15.jpg">
+				<img src="extra/bs16.jpg">
+				<img src="extra/bs17.jpg">
+				<img src="extra/bs18.jpg">
+				<img src="extra/bs21.png">
+				<img src="extra/bs22.jpg">
+				<img src="extra/bs23.gif">
+				<img src="extra/bs24.jpg">
+				<img src="extra/bs25.jpg">
+				<img src="extra/bs26.png">
+				<img src="extra/bs27.png">
+				<img src="extra/bs28.png">
+				<img src="extra/bs29.png">
+				<img src="extra/bs30.gif">
+				<img src="extra/bs19.jpg">
+				<img src="extra/bs9.jpg">
+				<img src="extra/bs20.jpg">
+			</section>
+
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/naII4zpo8_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		</div>
+
+		<div class="page" data-page="6">
+			<h2>Puoi scaricare l'ultima versione <a href="https://www.emugifs.net/wp-content/uploads/2021/07/Eh-Volevi-GIF-Zeb89-MEME-Reazione-Divertente-dello-YouTuber-Italiano-da-Usare-nei-Commenti-ai-Post-di-Facebook-o-nei-Gruppi-WhatsApp-Scarica-Gratis-e-Condividi.gif" target="_blank" rel="noopener noreferrer" class="ref">cliccando qua</a></h2>
+
+			<h2>Se non sai come installarla puoi fare riferimento alla guida che trovi disponibile <a href="https://github.com/SbekuMod/doc/wiki/2.-SbekuMod" target="_blank" rel="noopener noreferrer" class="ref">cliccando qua</a></h2>
+		</div>
+
+		<div class="page center" data-page="7">
+			<h2>SOWCT Team</h2>
+			
+			<span class="fade3"><b>Lead Developer:</b> Giuseppe "LaStringa" Corsino<br></span>
+			<span class="fade7"><b>Storyboard:</b> Exodd<br></span>
+			<span class="fade2"><b>Soundtrack:</b> <a href=https://www.twitch.tv/stereonauti class="ref" target="_blank" style="color:var(--color2);">Stereonauti</a><br></span>
+			<span class="fade11"><b>Main Menu Theme:</b><br>Stereonauti<br>Eleirbag Idlanir<br></span>
+			<span class="fade4"><b>Artwork & Design:</b> <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="ref" style="color:var(--color1);">Nocturna Draco</a><br></span>
+			<span class="fade5"><b>Documentarist & WebSiteDev:</b> Lorenzo Tilli aka <a href="https://steamcommunity.com/profiles/76561198095885367/" target="_blank" rel="noopener noreferrer" class="ref" style="color:var(--color3);">LaXis315</a><br></span>
+			<span class="fade8"><b>Writers:</b><br>Gabriele "gpexio" Pecchioni<br>Speedy Cheddar<br>Lorenzo Giuliani<br>Klezzon<br></span>
+			<span class="fade9"><b>3D Modeling & Video Editing:</b> Giuseppe "LaStringa" Corsino<br></span>
+			<span class="fade10"><b>Video Capture:</b><br>Speedy Cheddar<br>Gabriele "gpexio" Pecchioni<br></span>
+			<span class="fade6"><b>"Echoes of The Desert" Logo: </b>Togn3K<br></span>
+			<span class="fade2"><b>QA & Beta Testers:</b><br>gpexio<br>Togn3K<br>Simone Aronica<br></span>
+			<span class="fade1"><b>Moderatori:</b><br>4Claws<br>Khanattila<br></span>
+			<div style="font-size:9px; text-align:right;">I colori dei link di questa pagina sono generati randomicamente. Se non visibili consiglio di ricaricare la pagina.</div>
+		</div>
+	</section>
+</main>
+
+	
+
+</body></html>
