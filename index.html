@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it-IT"><head><meta http-equiv="Content-Type" content="text/html; utf-8">
-	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	<link rel="stylesheet" href="brand/stylesheet.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="alien1/stylesheet.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="alien2/stylesheet.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<style>
 		
 		:root {
@@ -87,6 +87,8 @@
 			font-size : 28px;
 			font-weight:600;
 		}
+
+		
 		
 		.dropbtn {
 		  background-color: #722800;
@@ -453,7 +455,76 @@
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		
 		}
-		
+
+		.img-grid{
+			display: grid;
+			grid-template-areas: 
+				"img title"
+				"img subtitle"
+				"controls controls";
+			margin-bottom: 1rem;
+		}
+
+		.img-grid img{
+			width: 8rem;
+			height: 8rem;
+			grid-area: img;
+			margin-right: .5rem;
+		}
+
+		.img-grid button{
+			background-color: transparent;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			margin-right: .5rem;
+		}
+
+		.img-grid button i{
+			font-size: 1.5rem;
+		}
+
+		.img-grid h2{
+			grid-area: title;
+			font-size: 1.5rem;	
+			margin: 0;
+			align-self: end;
+		}
+
+		.img-grid h3{
+			grid-area: subtitle;
+			font-size: 1.2rem;	
+		}
+
+		.img-grid div{
+			grid-area: controls;
+			margin-top: .5rem;
+		}
+
+		.img-grid i{
+			color: #da4f04
+		}
+
+		@media (max-width: 1200px) {
+		  #photos {
+		  -moz-column-count:    4;
+		  -webkit-column-count: 4;
+		  column-count:         4;
+		  }
+		}
+		@media (max-width: 1000px) {
+		  #photos {
+		  -moz-column-count:    3;
+		  -webkit-column-count: 3;
+		  column-count:         3;
+		  }
+		}
+		@media (max-width: 800px) {
+		  #photos {
+		  -moz-column-count:    2;
+		  -webkit-column-count: 2;
+		  column-count:         2;
+
 		@media (max-width: 1200px) {
 		  #photos {
 		  -moz-column-count:    4;
@@ -485,6 +556,7 @@
 		
 	</style>
 	<script>
+
 
 		function smDropFunc() {
 		  document.getElementById("extraDropdown").classList.remove("show");
@@ -591,6 +663,15 @@
 	<section class="pages">
 		<div class="page is-active" data-page="1">
 			<div class="home">
+				<div class="img-grid">
+					<img src="Assets/Cover Suite.png"/>
+					<h2>Echoes of the Desert - 22 Minutes Suite</h2>	
+					<h3>Stereonauti</h3>
+					<div>
+						<button id="play-btn"><i class="bi-play-circle-fill"></i></button>
+						<button id="volume-btn"><i class="bi-volume-up"></i></button>
+					</div>
+				</div>
 				<div><h3>Benvenuto nel debriefing del DLC di Outer Wilds.</h3></div>
 				<div>
 				Ciao Mike, ora che hai finito la nostra mod e <u>tutto</u><sup><a href="#fn1" id="ref1">*</a></sup> Outer Wilds, ti offriamo un ultimo sguardo verso i segreti del DLC tramite questa pagina interattiva.<br><br>
@@ -919,7 +1000,6 @@
 		</div>
 	</section>
 </main>
-
-	
-
+<audio src="Assets/background-22-min.mp3" preload="metadata"></audio>
+<script src="media-player.js"></script>
 </body></html>
