@@ -208,6 +208,10 @@
 			text-decoration:none;
 			color:gold;
 		}
+
+		#lore-div p{
+			font-size: 25px;
+		}
 		
 		.page[data-page="6"] a:nth-of-type(1){
 			color: var(--color1);
@@ -844,9 +848,10 @@
 		</div>
 
 		<div class="page" data-page="3">
-			<img src="Assets/logo.png">
-
-			<div style="font-size:25px;">
+			<div style="width: 100%; display: flex; align-items: center; justify-content: center">
+				<img src="Assets/logo.png">
+			</div>
+			<div style="font-size:25px;" id="lore-div">
 			<p>Mentre eravamo in viaggio verso il Grande Occhio, ebbi la prima visione durante il sonno.</p>
 
 			<p>Vidi una creatura di una razza sconosciuta svegliarsi sotto il cielo di un mondo ignoto e partire a bordo di un rudimentale congegno volante, e giungere qui, nella Nave Madre.<br>
