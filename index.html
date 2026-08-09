@@ -610,8 +610,6 @@
 			const canvas = document.getElementById("background-canvas");
 			const ctx = canvas.getContext("2d");
 
-			//const stoneTrigger = document.getElementById("stone");
-
 			const stoneImage = new Image();
 
 			let stoneX = 0;
@@ -670,6 +668,11 @@
 			        window.innerHeight
 			    );
 
+			    const home = document.querySelector('.page[data-page="1"]');
+			    if (!home || !home.classList.contains('is-active')) {
+        			return;
+    			    }
+
 			    if (stoneImage.complete && stoneImage.naturalWidth > 0) {
 			        ctx.drawImage(
 			            stoneImage,
@@ -724,6 +727,12 @@
 			let mouseOverStone = false;
 
 			document.addEventListener("mousemove", (event) => {
+
+			   const home = document.querySelector('.page[data-page="1"]');
+
+			    if (!home || !home.classList.contains('is-active')) {
+			        return;
+			    }	
 
 			    const mouseX = event.clientX;
 			    const mouseY = event.clientY;
@@ -812,10 +821,20 @@
 
 		function SwitchPage (page_id) {
 			const current_page = document.querySelector('.pages .page.is-active');
-			current_page.classList.remove('is-active');
 
-			const next_page = document.querySelector(`.pages .page[data-page="${page_id}"]`);
-			next_page.classList.add('is-active');
+			    if (current_page) {
+			        current_page.classList.remove('is-active');
+			    }
+
+			    const next_page = document.querySelector(
+			        `.pages .page[data-page="${page_id}"]`
+			    );
+
+			    if (next_page) {
+			        next_page.classList.add('is-active');
+			    }
+
+			drawStone();
 		}
 
 	</script>
