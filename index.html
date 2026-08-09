@@ -5,6 +5,17 @@
 	<link rel="stylesheet" href="alien2/stylesheet.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<style>
+
+		#background-canvas {
+		    position: fixed;
+		    inset: 0;
+
+		    width: 100vw;
+		    height: 100vh;
+
+		    z-index: 0;
+		    
+		}
 		
 		:root {
 			--color1: orange;
@@ -13,7 +24,7 @@
 			--color4: orange;
 			--color5: orange;
 			--cend: 7;
-			--credits = 4.0s;
+			--credits: 4.0s;
 		}
 		
 		* {
@@ -152,7 +163,13 @@
 			padding-left: 142px;
 			padding-right:142px;
 		}
-		
+
+		header,
+		.pages {
+		    position: relative;
+		    z-index: 1;
+		}
+				
 		.pages{
 			margin-top:60px;
 		}
@@ -178,9 +195,7 @@
 		}
 		
 		#stone{
-			height: auto;
-			width: auto;
-			margin-left: 45%;
+			 opacity: 0;
 		}
 		
 		table {
@@ -511,52 +526,35 @@
 		}
 
 		@media (max-width: 1200px) {
-		  #photos {
-		  -moz-column-count:    4;
-		  -webkit-column-count: 4;
-		  column-count:         4;
-		  }
+		    #photos {
+		        -moz-column-count: 4;
+		        -webkit-column-count: 4;
+		        column-count: 4;
+		    }
 		}
-		@media (max-width: 1000px) {
-		  #photos {
-		  -moz-column-count:    3;
-		  -webkit-column-count: 3;
-		  column-count:         3;
-		  }
-		}
-		@media (max-width: 800px) {
-		  #photos {
-		  -moz-column-count:    2;
-		  -webkit-column-count: 2;
-		  column-count:         2;
 
-		@media (max-width: 1200px) {
-		  #photos {
-		  -moz-column-count:    4;
-		  -webkit-column-count: 4;
-		  column-count:         4;
-		  }
-		}
 		@media (max-width: 1000px) {
-		  #photos {
-		  -moz-column-count:    3;
-		  -webkit-column-count: 3;
-		  column-count:         3;
-		  }
+		    #photos {
+		        -moz-column-count: 3;
+		        -webkit-column-count: 3;
+		        column-count: 3;
+		    }
 		}
+
 		@media (max-width: 800px) {
-		  #photos {
-		  -moz-column-count:    2;
-		  -webkit-column-count: 2;
-		  column-count:         2;
-		  }
+		    #photos {
+		        -moz-column-count: 2;
+		        -webkit-column-count: 2;
+		        column-count: 2;
+		    }
 		}
+
 		@media (max-width: 400px) {
-		  #photos {
-		  -moz-column-count:    1;
-		  -webkit-column-count: 1;
-		  column-count:         1;
-		  }
+		    #photos {
+		        -moz-column-count: 1;
+		        -webkit-column-count: 1;
+		        column-count: 1;
+		    }
 		}
 		
 	</style>
@@ -599,10 +597,201 @@
 
 			const tab_switchers = document.querySelectorAll('[data-switcher]');
 
-			const img = document.getElementById('stone');
-			img.addEventListener('mouseout',() =>{
-				const img = document.getElementById('stone');
-				img.style.marginLeft = Math.random()*100+"% ";
+			// const img = document.getElementById('stone');
+			// img.addEventListener('mouseout',() =>{
+			// 	const img = document.getElementById('stone');
+			// 	img.style.marginLeft = Math.random()*100+"% ";
+			// });
+
+			// ========================================
+			// STONE - CANVAS BACKGROUND
+			// ========================================
+
+			const canvas = document.getElementById("background-canvas");
+			const ctx = canvas.getContext("2d");
+
+			//const stoneTrigger = document.getElementById("stone");
+
+			const stoneImage = new Image();
+
+			let stoneX = 0;
+			let stoneY = 0;
+
+			let targetX = 0;
+			let targetY = 0;
+
+			let moving = false;
+
+
+			// ========================================
+			// RESIZE CANVAS
+			// ========================================
+
+			function resizeCanvas() {
+
+			    const dpr = window.devicePixelRatio || 1;
+
+			    canvas.width = window.innerWidth * dpr;
+			    canvas.height = window.innerHeight * dpr;
+
+			    canvas.style.width = window.innerWidth + "px";
+			    canvas.style.height = window.innerHeight + "px";
+
+			    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+			}
+
+
+			// ========================================
+			// POSIZIONE INIZIALE
+			// ========================================
+
+			function initializeStone() {
+
+			    stoneX = window.innerWidth / 2 - stoneImage.width / 2;
+			    stoneY = window.innerHeight / 2 - stoneImage.height / 2;
+
+			    targetX = stoneX;
+			    targetY = stoneY;
+
+			}
+
+
+			// ========================================
+			// DISEGNA LA LUNA
+			// ========================================
+
+			function drawStone() {
+
+			    ctx.clearRect(
+			        0,
+			        0,
+			        window.innerWidth,
+			        window.innerHeight
+			    );
+
+			    if (stoneImage.complete && stoneImage.naturalWidth > 0) {
+			        ctx.drawImage(
+			            stoneImage,
+			            stoneX,
+			            stoneY
+			        );
+			    }
+
+			}
+
+
+			// ========================================
+			// ANIMAZIONE
+			// ========================================
+
+			function animateStone() {
+
+			    if (moving) {
+
+			        const dx = targetX - stoneX;
+			        const dy = targetY - stoneY;
+
+			        stoneX += dx * 0.035;
+			        stoneY += dy * 0.035;
+
+
+			        if (
+			            Math.abs(dx) < 0.5 &&
+			            Math.abs(dy) < 0.5
+			        ) {
+
+			            stoneX = targetX;
+			            stoneY = targetY;
+
+			            moving = false;
+
+			        }
+
+			    }
+
+			    drawStone();
+
+			    requestAnimationFrame(animateStone);
+
+			}
+
+
+			// ========================================
+			// QUANDO ESCO DAL PNG
+			// ========================================
+
+			let mouseOverStone = false;
+
+			document.addEventListener("mousemove", (event) => {
+
+			    const mouseX = event.clientX;
+			    const mouseY = event.clientY;
+
+			    const isInside =
+			        mouseX >= stoneX &&
+			        mouseX <= stoneX + stoneImage.width &&
+			        mouseY >= stoneY &&
+			        mouseY <= stoneY + stoneImage.height;
+
+			    if (isInside && !mouseOverStone) {
+			        mouseOverStone = true;
+			    }
+
+			    if (!isInside && mouseOverStone) {
+			        mouseOverStone = false;
+
+			        const maxX =
+			            window.innerWidth - stoneImage.width;
+
+			        const maxY =
+			            window.innerHeight - stoneImage.height;
+
+			        targetX =
+			            Math.random() * Math.max(0, maxX);
+
+			        targetY =
+			            Math.random() * Math.max(0, maxY);
+
+			        moving = true;
+			    }
+			});
+
+
+			// ========================================
+			// CARICAMENTO PNG
+			// ========================================
+
+			stoneImage.onload = () => {
+
+			    resizeCanvas();
+
+			    initializeStone();
+
+			    animateStone();
+
+			};
+
+
+			stoneImage.onerror = () => {
+
+			    console.error(
+			        "Impossibile caricare Assets/Stone2-30.png"
+			    );
+
+			};
+
+			stoneImage.src = "Assets/Stone2-30.png";
+
+
+			// ========================================
+			// RESIZE
+			// ========================================
+
+			window.addEventListener("resize", () => {
+
+			    resizeCanvas();
+
 			});
 
 			for(let i = 0; i < tab_switchers.length; i++) {
@@ -632,7 +821,7 @@
 	</script>
 	
 <style type="text/css" id="operaUserStyle"></style></head>
-<body><header>
+<body> <canvas id="background-canvas"></canvas> <header>
 	<nav>
 		<h1>Echoes of the Desert Debriefing</h1>
 		<ul class="tabs">
