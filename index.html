@@ -597,6 +597,34 @@
 		        column-count: 1;
 		    }
 		}
+
+		.page[data-page="4"] iframe {
+		    width: 800px;
+		    height: 450px;
+		    max-width: 100%;
+		}
+
+		.wip-videos {
+		    display: grid;
+		    grid-template-columns: repeat(2, minmax(0, 1fr));
+		    gap: 30px;
+		    width: 100%;
+		    max-width: 1400px;
+		    margin: 0 auto;
+		}
+
+		.wip-column {
+		    display: flex;
+		    flex-direction: column;
+		    gap: 30px;
+		}
+
+		.wip-column iframe {
+		    width: 100%;
+		    aspect-ratio: 16 / 9;
+		    height: auto;
+		    display: block;
+		}
 		
 	</style>
 	<script>
@@ -969,7 +997,6 @@
 				Oltre alla mod, ci sono due ragazzi (Gli Stereonauti) che hanno composto una Suite di 22 minuti che è stata commentata anche da Andrew Pralow! Nella mod sono presenti ulteriori pezzi fatti da loro.
 				Trovate la suite in alto a sinistra<br><br>
 				</div>
-				<img id="stone" src="Assets/Stone2-30.png" style="margin: 1rem 0">
 				<sup id="fn1"><a href="#ref1" title="Jump back to footnote 1 in the text.">*</a> Il gioco base e il DLC hanno vari finali alternativi da scoprire (tra cui la distruzione dello spazio tempo fatta da Raiden). Molti di questi finali sono legati all'uso del nucleo dell'ATP in modi inaspettati o del buco nero che viene creato dal ATP stesso.<br>
 			</div>
 		</div>
@@ -1189,15 +1216,15 @@
 			<br>
 			<br>
 			<br>
-			<section style="display: inline-grid; column-gap: 20px;">
-				<section style="grid-column:1;">
+			<section class="wip-videos">
+				<section class="wip-column">
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/naII4zpo8_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wkv8GJFOInU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/i-F9QZqYRzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dZEeOnc8-6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.250%;"><iframe src="https://streamable.com/e/khp8cl" frameborder="0" width="100%" height="100%" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div>
 				</section>
-				<section style="grid-column:2;">
+				<section class="wip-column">
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7tfZRvrlP-4?start=65" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/12aNyGV9qRo?start=64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/93cw0_6hVZ4?start=69" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
