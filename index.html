@@ -627,6 +627,35 @@
 		}
 		
 	</style>
+	<script type = "module">
+		import { readAni, aniCss } from 'https://unpkg.com/ani-cursor@1.0.1/dist/index.js';
+
+		async function applyAniCursor(elementSelector, aniFileUrl) {
+		      try {
+		        // 1. Scarichiamo il file .ani come ArrayBuffer (dati binari)
+		        const response = await fetch(aniFileUrl);
+		        const buffer = await response.arrayBuffer();
+		        const bytes = new Uint8Array(buffer);
+
+		        // 2. Analizziamo i dati del file .ani (fotogrammi e tempi di animazione)
+		        const aniData = readAni(bytes);
+
+		        // 3. Generiamo la regola CSS @keyframes e il selettore :hover
+		        const cssRules = aniCss(elementSelector, aniData);
+
+		        // 4. Inseriamo il CSS generato nell'head della pagina
+		        const styleTag = document.createElement('style');
+		        styleTag.textContent = cssRules;
+		        document.head.appendChild(styleTag);
+
+		      } catch (error) {
+		        console.error("Errore nel caricamento o nella conversione del cursore .ani:", error);
+		      }
+		    }
+
+		    // Applicazione del cursore al passaggio sul div #demo-box
+		    applyAniCursor('main', 'Assets/cursor.ani');
+	</script>
 	<script>
 
 
