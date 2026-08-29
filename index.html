@@ -1082,7 +1082,7 @@
 		                    * { padding: 0; margin: 0; overflow: hidden; box-sizing: border-box; }
 		                    html, body { height: 100%; width: 100%; background: #000; }
 		                    img, .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-		                    img { width: 100%; height: 100%; object-fit: cover; }
+		                    img { width: 100%; height: 100%; object-fit: contain; }
 		                    .play-btn { 
 		                        font-size: 60px; 
 		                        color: white; 
@@ -1094,7 +1094,7 @@
 		                    .play-btn:hover { color: #da4f04; }
 		                </style>
 		                <a href="${src}${src.includes('?') ? '&' : '?'}autoplay=1">
-		                    <img src="${thumbnail}" alt="YouTube Thumbnail" onerror="this.onerror=null; this.src='${fallbackThumbnail}';">
+		                    <img src="${thumbnail}" alt="YouTube Thumbnail" onload="if(this.naturalWidth <= 120 && !this.dataset.fallback){ this.dataset.fallback='1'; this.src='${fallbackThumbnail}'; }">
 		                    <div class="play-btn">▶</div>
 		                </a>
 		            `;
