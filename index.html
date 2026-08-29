@@ -753,7 +753,7 @@
 		}
 
 		// Esecuzione
-		applyAniCursor('main', 'Assets/cursor.ani');
+		applyAniCursor('body', 'Assets/cursor.ani');
 
 
 		function smDropFunc() {
@@ -1093,7 +1093,7 @@
 		                    .play-btn:hover { color: #da4f04; }
 		                </style>
 		                <a href="${src}${src.includes('?') ? '&' : '?'}autoplay=1">
-		                    <img src="${thumbnail}" alt="YouTube Thumbnail">
+		                    <img src="${thumbnail}" alt="YouTube Thumbnail" onerror="this.onerror=null; this.src='${fallbackThumbnail}';">
 		                    <div class="play-btn">▶</div>
 		                </a>
 		            `;
@@ -1117,25 +1117,24 @@
 			</li>
 			<li class="tab">
 				<div class="dropdown">
-				  <button onclick="smDropFunc()" class="dropbtn">SbekuMod</button>
-				  <div id="smDropdown" class="dropdown-content">
-					<!--<a data-switcher data-tab="3">Lore</a>-->
-					<a data-switcher data-tab="5">WIP</a>
-					<a data-switcher data-tab="6">Download</a>
-				  </div>
-				</div>
-			</li>
-			<li class="tab">
-				<div class="dropdown">
 				  <button onclick="extraDropFunc()" class="dropbtn">Extra</button>
 				  <div id="extraDropdown" class="dropdown-content">
 					<a data-switcher data-tab="2">Easter Egg, Chicche e References</a>
-					<a data-switcher data-tab="4">Documentari e Documenti legati al gioco</a>
+					<a data-switcher data-tab="3">Documentari e Documenti legati al gioco</a>
 				  </div>
 				</div>
 			</li>
+      <li class="tab">
+        <div class="dropdown">
+          <button onclick="smDropFunc()" class="dropbtn">SbekuMod</button>
+          <div id="smDropdown" class="dropdown-content">
+          <a data-switcher data-tab="4">WIP</a>
+          <a data-switcher data-tab="5">Download</a>
+          </div>
+        </div>
+      </li>
 			<li class="tab">
-				<a data-switcher data-tab="7">Credits</a>
+				<a data-switcher data-tab="6">Credits</a>
 			</li>
 		</ul>
 	</nav>
@@ -1336,7 +1335,7 @@
 			</div>
 		</div>
 
-		<div class="page" data-page="4">
+		<div class="page" data-page="3">
 			<h2>Documentari e Documenti</h2>
 			<br><br>
 			
@@ -1366,7 +1365,7 @@
 			</div>
 		</div>
 
-		<div class="page" data-page="5">
+		<div class="page" data-page="4">
 			<h1 style="font-size:25px;">Work in progress e materiale extra</h1>
 			<h3 style="font-size:15px;font-weight:normal;">In questa sezione sono raccolti i bozzetti e alcuni retroscena dello sviluppo della SbekuMod, per i curiosi!</h3>
 			<br>
@@ -1406,9 +1405,8 @@
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wkv8GJFOInU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/i-F9QZqYRzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dZEeOnc8-6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-				<div style="width: 100%; height: 0px; position: relative; padding-bottom: 56.250%;"><iframe src="https://streamable.com/e/khp8cl" frameborder="0" width="100%" height="100%" allowfullscreen style="width: 100%; height: 100%; position: absolute;"></iframe></div>
-				</section>
-				<section class="wip-column">
+			</section>
+			<section class="wip-column">
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7tfZRvrlP-4?start=65" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/12aNyGV9qRo?start=64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/93cw0_6hVZ4?start=69" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1417,7 +1415,7 @@
 			</section>
 		</div>
 
-		<div class="page" data-page="6">
+		<div class="page" data-page="5">
 
 			<img src="Assets/logo.png">
 
@@ -1426,7 +1424,7 @@
 			<h2>Se non sai come installarla puoi fare riferimento alla guida che trovi disponibile <a href="https://github.com/SbekuMod/doc/wiki/2.-SbekuMod" target="_blank" rel="noopener noreferrer" style="color: rgb(42,217,133);" class="ref">cliccando qua</a>.</h2><br>
 		</div>
 
-		<div class="page center" data-page="7">
+		<div class="page center" data-page="6">
 			<h2>SOWC Team</h2><br>
 			
 			<span><b>Development, 3D Modelling & Video Editing:</b><br><p style="color: rgb(42,217,133);">Giuseppe "LaStringa" Corsino <a href="https://ko-fi.com/corsdev" class="ref" target="_blank"><img src="Assets/kofi.png" width="16" height="16"></a></p><br></span>
