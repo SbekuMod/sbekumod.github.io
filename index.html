@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it-IT"><head><meta http-equiv="Content-Type" content="text/html; utf-8">
+<html lang="it-IT"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<link rel="stylesheet" href="brand/stylesheet.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="alien1/stylesheet.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" href="alien2/stylesheet.css" type="text/css" charset="utf-8" />
@@ -1074,6 +1074,7 @@
 		            const videoId = match[1];
 		            // Genera l'URL della miniatura alla massima risoluzione
 		            const thumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+                const fallbackThumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 		            
 		            // Crea un documento HTML interno con la copertina e il tasto play
 		            const srcdoc = `
