@@ -667,3 +667,29 @@ ul .zelda {
     height: auto;
     display: block;
 }
+
+
+/*PER LA LISTA TEPORIANI+MINERALE*/
+.curios .minerals-grid {
+    border-style: none;
+    display: grid;
+    /* Tre colonne: Immagine (15vw) - Testo (auto) - Immagine (15vw) */
+    grid-template-columns: 15vw minmax(100px, auto) 15vw; 
+    align-items: center;      /* Allinea l'altezza al centro */
+    justify-content: center;
+    justify-items: center;    /* Centra gli elementi nelle colonne */
+    gap: 20px 15px;           /* Spazio tra righe (20px) e colonne (15px) */
+  }
+
+  .minerals-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .minerals-grid span {
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;           /* FONDAMENTALE: elimina lo spazio di interlinea extra che spinge il testo in basso */
+    align-self: center;
+  }

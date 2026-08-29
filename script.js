@@ -413,7 +413,9 @@
                 });
             });
         });
+
     }
+
 
     function SwitchPage(page_id) {
 
