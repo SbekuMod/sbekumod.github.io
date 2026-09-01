@@ -462,9 +462,9 @@
                 /youtube(?:-nocookie)?\.com\/embed\/videoseries\?list=([^&]+)/
             );
 
-            if (videoMatch && match[1]) {
-                console.log("src")
-                const videoId = match[1];
+            if (!playlistMatch && !playlistFallbackMatch && videoMatch[1]) {
+                console.log(src)
+                const videoId = videoMatch[1];
                 // Genera l'URL della miniatura alla massima risoluzione
                 const thumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
                 const fallbackThumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
