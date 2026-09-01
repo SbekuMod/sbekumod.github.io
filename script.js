@@ -450,9 +450,20 @@
             const src = iframe.src;
 
             // Cerca gli URL di YouTube (esclude Streamable o altri)
-            const match = src.match(/youtube(?:-nocookie)?\.com\/embed\/([^?]+)/);
+            const videoMatch = src.match(
+                /youtube(?:-nocookie)?\.com\/embed\/([^?]+)/
+            );
 
-            if (match && match[1]) {
+            const playlistMatch = src.match(
+                /youtube(?:-nocookie)?\.com\/embed\/videoseries\?.*?[&?]list=([^&]+)/
+            );
+
+            const playlistFallbackMatch = src.match(
+                /youtube(?:-nocookie)?\.com\/embed\/videoseries\?list=([^&]+)/
+            );
+
+            if (videoMatch && match[1]) {
+                console.log("src")
                 const videoId = match[1];
                 // Genera l'URL della miniatura alla massima risoluzione
                 const thumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
