@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Serif Gothic';
+    src: url('SerifGothic-Heavy.woff2') format('woff2'),
+        url('SerifGothic-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Serif Gothic';
+    src: url('SerifGothic-Light.woff2') format('woff2'),
+        url('SerifGothic-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Serif Gothic';
+    src: url('SerifGothic.woff2') format('woff2'),
+        url('SerifGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Serif Gothic';
+    src: url('SerifGothic-Black.woff2') format('woff2'),
+        url('SerifGothic-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Serif Gothic';
+    src: url('SerifGothic-ExtraBold.woff2') format('woff2'),
+        url('SerifGothic-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

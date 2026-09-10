@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'alien3';
+    src: url('LSW-Drachenklaue-Samys-01.woff2') format('woff2'),
+        url('LSW-Drachenklaue-Samys-01.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
